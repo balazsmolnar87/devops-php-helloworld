@@ -2,7 +2,7 @@
 FROM php:8.2-fpm-alpine
 
 # Copy composer.lock and composer.json
-COPY composer.lock composer.json /var/www/html/
+COPY src/composer.lock src/composer.json /var/www/html/
 
 # Set the working directory
 WORKDIR /var/www/html
@@ -21,9 +21,6 @@ RUN apk add --no-cache --virtual .build-deps \
 
 # Install Composer
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
-
-# Copy the application code
-COPY . .
 
 # Set environment variable to allow Composer to run as root
 ENV COMPOSER_ALLOW_SUPERUSER=1
