@@ -16,6 +16,7 @@ RUN apk add --no-cache --virtual .build-deps \
     linux-headers \
     && apk add --no-cache \
     nginx \
+    mariadb-client \
     && pecl install xdebug \
     && docker-php-ext-enable xdebug
 
